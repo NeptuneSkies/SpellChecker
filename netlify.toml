@@ -1,0 +1,12 @@
+# Global headers applied to all files
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self';"
+
+# Specific headers for spell-checker.js
+[[headers]]
+  for = "/spell-checker.js"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
