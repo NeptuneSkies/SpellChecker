@@ -4,13 +4,14 @@
   [headers.values]
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Content-Security-Policy = "default-src 'self'; script-src 'self';"
-
-[[headers]]
-  for = "/spell-checker.js"
-  [headers.values]
     Access-Control-Allow-Origin = "*"
 
-[[headers]]
-  for = "/typo-js/typo.js"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+# [[headers]]
+#   for = "/spell-checker.js"
+#   [headers.values]
+#     Access-Control-Allow-Origin = "*"
+
+# [[headers]]
+#   for = "/typo-js/typo.js"
+#   [headers.values]
+#     Access-Control-Allow-Origin = "*"
