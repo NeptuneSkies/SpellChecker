@@ -7,10 +7,9 @@ class FileLoader {
         this.dicFilePath = dicFilePath;
         this.affContent = ''; // Property to store content of aff file
         this.dicContent = ''; // Property to store content of dic file
-        this.aff_file = '';
-        this.dic_file = '';
     }
 
+    // Method to Load the files
     async loadFiles() {
         try {
             this.affContent = await this.fetchFile(this.affFilePath);
@@ -100,6 +99,7 @@ class SpellChecker {
         this.addStyles();
     }
 
+    // Adding styles to misspelled words 
     addStyles() {
         const style = document.createElement('style');
         style.textContent = `
