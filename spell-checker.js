@@ -2,7 +2,7 @@ import Typo from '/typo-js/typo.js';
 
 class FileLoader {
     constructor(affFilePath = 'https://neptune-skies-spell-checker.netlify.app/typo-js/dictionaries/en_GB/en_GB.aff', 
-        dicFilePath = '/typo-js/dictionaries/en_GB/en_GB.dic') {
+        dicFilePath = 'https://neptune-skies-spell-checker.netlify.app/typo-js/dictionaries/en_GB/en_GB.dic') {
         this.affFilePath = affFilePath;
         this.dicFilePath = dicFilePath;
         this.affContent = ''; // Property to store content of aff file
