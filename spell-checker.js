@@ -1,58 +1,60 @@
 import Typo from '/typo-js/typo.js';
 
-class FileLoader {
-    constructor(affFilePath = '/typo-js/dictionaries/en_GB/en_GB.aff', 
-        dicFilePath = '/typo-js/dictionaries/en_GB/en_GB.dic') {
-        this.affFilePath = affFilePath;
-        this.dicFilePath = dicFilePath;
-        this.affContent = ''; // Property to store content of aff file
-        this.dicContent = ''; // Property to store content of dic file
-        this.aff_file = '';
-        this.dic_file = '';
-    }
+// class FileLoader {
+//     constructor(affFilePath = '/typo-js/dictionaries/en_GB/en_GB.aff', 
+//         dicFilePath = '/typo-js/dictionaries/en_GB/en_GB.dic') {
+//         this.affFilePath = affFilePath;
+//         this.dicFilePath = dicFilePath;
+//         this.affContent = ''; // Property to store content of aff file
+//         this.dicContent = ''; // Property to store content of dic file
+//         this.aff_file = '';
+//         this.dic_file = '';
+//     }
 
-    async loadFiles() {
-        try {
-            this.affContent = await this.fetchFile(this.affFilePath);
-            this.dicContent = await this.fetchFile(this.dicFilePath);
-            return [this.affContent, this.dicContent];
-        } catch (error) {
-            this.handleError(error);
-        }
-    }
-    async fetchFile(filePath) {
-        const response = await fetch(filePath);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch ${filePath}: ${response.statusText}`);
-        }
-        return response.text();
-    }
+//     async loadFiles() {
+//         try {
+//             this.affContent = await this.fetchFile(this.affFilePath);
+//             this.dicContent = await this.fetchFile(this.dicFilePath);
+//             return [this.affContent, this.dicContent];
+//         } catch (error) {
+//             this.handleError(error);
+//         }
+//     }
+//     async fetchFile(filePath) {
+//         const response = await fetch(filePath);
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch ${filePath}: ${response.statusText}`);
+//         }
+//         return response.text();
+//     }
 
-    handleError(error) {
-        console.error('There has been a problem with the fetch operation:', error);
-        throw error; 
-    }
-}
+//     handleError(error) {
+//         console.error('There has been a problem with the fetch operation:', error);
+//         throw error; 
+//     }
+// }
 
 
 class SpellChecker {
     constructor(language_code = 'en_GB'){
         this.language_code = language_code;
+        this.aff_file = '/typo-js/dictionaries/en_GB/en_GB.aff';
+        this.dic_file = '/typo-js/dictionaries/en_GB/en_GB.dic';
         this.regexPunctuation = /[!"#$%&()*+,-./:;<=>?@^_`{|}~]+/g;
     }
 
         
-    // Loading the files using File Loader
-    async loadAndStoreFiles() {
-        const fileLoader = new FileLoader();
+    // // Loading the files using File Loader
+    // async loadAndStoreFiles() {
+    //     const fileLoader = new FileLoader();
         
-        try {
-            [this.aff_file, this.dic_file] = await fileLoader.loadFiles();
+    //     try {
+    //         [this.aff_file, this.dic_file] = await fileLoader.loadFiles();
             
-        } catch (error) {
-            console.error('Failed to load files:', error);
-        }
-    }
+    //     } catch (error) {
+    //         console.error('Failed to load files:', error);
+    //     }
+    // }
 
     async createDictionary() {
         this.dictionary = new Typo(this.language_code, this.aff_file, this.dic_file);
