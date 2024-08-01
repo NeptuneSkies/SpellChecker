@@ -58,7 +58,7 @@ class SpellChecker {
         await this.dictionary.ready;
     }
 
-    highlightMisspelled() {
+    highlightMisspelt() {
         if (!this.dictionary) {
             console.error("Dictionary hasn't not loaded");
             return;
@@ -81,7 +81,7 @@ class SpellChecker {
                 let cleanWord = word.replace(this.regexPunctuation, "");
 
                 if (this.dictionary.check(cleanWord) === false) {
-                    return `<span data-word="misspelled">${word}</span>`;
+                    return `<span data-word="misspelt">${word}</span>`;
                 }
                 return word;
             }).join(' ');
@@ -95,15 +95,15 @@ class SpellChecker {
     async run() {
         await this.loadAndStoreFiles();
         await this.createDictionary();
-        this.highlightMisspelled();
+        this.highlightMisspelt();
         this.addStyles();
     }
 
-    // Adding styles to misspelled words 
+    // Adding styles to misspelt words 
     addStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            [data-word="misspelled"] {
+            [data-word="misspelt"] {
                 background-color: rgba(255, 0, 0, 0.5);
 
             }
